@@ -10,17 +10,21 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Segoe UI', 'Courier New', monospace, sans-serif;
         }
 
         :root {
             --primary-yellow: #FFD700;
+            --neon-yellow: #FFFF00;
             --dark-yellow: #FFC000;
             --accent-yellow: #FFEE32;
-            --chaos-orange: #FF8C00;
-            --dark-bg: #121212;
+            --cyber-orange: #FF8C00;
+            --dark-bg: #0A0A0A;
+            --darker-bg: #050505;
+            --grid-color: rgba(255, 215, 0, 0.1);
             --light-text: #FFFFFF;
-            --card-bg: #1E1E1E;
+            --card-bg: #111111;
+            --terminal-green: #00FF00;
         }
 
         body {
@@ -28,32 +32,140 @@
             color: var(--light-text);
             line-height: 1.6;
             overflow-x: hidden;
+            background-image: 
+                linear-gradient(var(--grid-color) 1px, transparent 1px),
+                linear-gradient(90deg, var(--grid-color) 1px, transparent 1px);
+            background-size: 50px 50px;
+        }
+
+        /* Glitch effect for header */
+        .glitch-container {
+            position: relative;
+        }
+
+        .glitch {
+            position: relative;
+            display: inline-block;
+        }
+
+        .glitch::before,
+        .glitch::after {
+            content: attr(data-text);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .glitch::before {
+            left: 2px;
+            text-shadow: -2px 0 var(--terminal-green);
+            animation: glitch-anim 5s infinite linear alternate-reverse;
+            clip: rect(44px, 450px, 56px, 0);
+        }
+
+        .glitch::after {
+            left: -2px;
+            text-shadow: -2px 0 var(--cyber-orange);
+            animation: glitch-anim2 3s infinite linear alternate-reverse;
+            clip: rect(44px, 450px, 56px, 0);
+        }
+
+        @keyframes glitch-anim {
+            0% { clip: rect(42px, 9999px, 44px, 0); }
+            5% { clip: rect(12px, 9999px, 59px, 0); }
+            10% { clip: rect(48px, 9999px, 29px, 0); }
+            15% { clip: rect(42px, 9999px, 73px, 0); }
+            20% { clip: rect(63px, 9999px, 27px, 0); }
+            25% { clip: rect(34px, 9999px, 55px, 0); }
+            30% { clip: rect(86px, 9999px, 73px, 0); }
+            35% { clip: rect(20px, 9999px, 20px, 0); }
+            40% { clip: rect(26px, 9999px, 60px, 0); }
+            45% { clip: rect(25px, 9999px, 66px, 0); }
+            50% { clip: rect(57px, 9999px, 98px, 0); }
+            55% { clip: rect(5px, 9999px, 46px, 0); }
+            60% { clip: rect(82px, 9999px, 31px, 0); }
+            65% { clip: rect(54px, 9999px, 27px, 0); }
+            70% { clip: rect(28px, 9999px, 99px, 0); }
+            75% { clip: rect(45px, 9999px, 69px, 0); }
+            80% { clip: rect(23px, 9999px, 85px, 0); }
+            85% { clip: rect(54px, 9999px, 84px, 0); }
+            90% { clip: rect(45px, 9999px, 47px, 0); }
+            95% { clip: rect(37px, 9999px, 97px, 0); }
+            100% { clip: rect(4px, 9999px, 9px, 0); }
+        }
+
+        @keyframes glitch-anim2 {
+            0% { clip: rect(65px, 9999px, 100px, 0); }
+            5% { clip: rect(52px, 9999px, 74px, 0); }
+            10% { clip: rect(79px, 9999px, 85px, 0); }
+            15% { clip: rect(75px, 9999px, 5px, 0); }
+            20% { clip: rect(67px, 9999px, 61px, 0); }
+            25% { clip: rect(14px, 9999px, 79px, 0); }
+            30% { clip: rect(1px, 9999px, 66px, 0); }
+            35% { clip: rect(86px, 9999px, 30px, 0); }
+            40% { clip: rect(23px, 9999px, 98px, 0); }
+            45% { clip: rect(85px, 9999px, 72px, 0); }
+            50% { clip: rect(71px, 9999px, 75px, 0); }
+            55% { clip: rect(2px, 9999px, 48px, 0); }
+            60% { clip: rect(30px, 9999px, 16px, 0); }
+            65% { clip: rect(59px, 9999px, 50px, 0); }
+            70% { clip: rect(41px, 9999px, 62px, 0); }
+            75% { clip: rect(2px, 9999px, 82px, 0); }
+            80% { clip: rect(47px, 9999px, 73px, 0); }
+            85% { clip: rect(3px, 9999px, 27px, 0); }
+            90% { clip: rect(40px, 9999px, 86px, 0); }
+            95% { clip: rect(45px, 9999px, 72px, 0); }
+            100% { clip: rect(23px, 9999px, 49px, 0); }
         }
 
         header {
-            background: linear-gradient(135deg, var(--dark-yellow), var(--chaos-orange));
-            color: #000;
+            background: linear-gradient(135deg, rgba(0,0,0,0.9), rgba(10,10,10,0.95));
+            color: var(--primary-yellow);
             text-align: center;
             padding: 2.5rem 1rem;
-            box-shadow: 0 4px 12px rgba(255, 140, 0, 0.4);
             position: relative;
-            border-bottom: 5px solid #000;
+            border-bottom: 3px solid var(--primary-yellow);
+            box-shadow: 0 0 30px rgba(255, 215, 0, 0.3);
+            overflow: hidden;
+        }
+
+        .terminal-line {
+            font-family: 'Courier New', monospace;
+            color: var(--terminal-green);
+            font-size: 1.1rem;
+            margin-top: 10px;
+            text-shadow: 0 0 5px rgba(0, 255, 0, 0.7);
+        }
+
+        .blink {
+            animation: blink 1s infinite;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
         }
 
         .logo-container {
             margin-bottom: 1rem;
+            position: relative;
+            z-index: 2;
         }
 
         .logo {
             font-size: 3.5rem;
             margin-bottom: 0.5rem;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            color: var(--neon-yellow);
+            text-shadow: 0 0 10px rgba(255, 255, 0, 0.7);
         }
 
         h1 {
             font-size: 2.8rem;
             margin-bottom: 0.5rem;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+            text-transform: uppercase;
+            letter-spacing: 2px;
         }
 
         .tagline {
@@ -62,37 +174,78 @@
             opacity: 0.9;
             text-transform: uppercase;
             letter-spacing: 1px;
+            color: var(--accent-yellow);
+            margin-bottom: 10px;
         }
 
         .chaos-badge {
             display: inline-block;
-            background: #000;
-            color: var(--primary-yellow);
-            padding: 5px 15px;
-            border-radius: 20px;
-            font-size: 0.9rem;
+            background: var(--primary-yellow);
+            color: #000;
+            padding: 8px 20px;
+            border-radius: 0;
+            font-size: 1rem;
             margin-top: 10px;
             font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            border: 2px solid #000;
+            font-family: 'Courier New', monospace;
+        }
+
+        .scan-line {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, transparent 50%, rgba(255, 215, 0, 0.05) 50%);
+            background-size: 100% 4px;
+            z-index: 1;
+            pointer-events: none;
         }
 
         main {
             max-width: 1200px;
             margin: 0 auto;
             padding: 2rem;
+            position: relative;
+            z-index: 2;
         }
 
         .section {
-            background-color: var(--card-bg);
-            border-radius: 12px;
+            background-color: rgba(17, 17, 17, 0.9);
+            border-radius: 0;
             padding: 2rem;
             margin-bottom: 2rem;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-            border-left: 5px solid var(--chaos-orange);
-            transition: transform 0.3s ease;
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.2);
+            border: 1px solid rgba(255, 215, 0, 0.3);
+            border-left: 5px solid var(--cyber-orange);
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--neon-yellow), transparent);
+            animation: scan 3s linear infinite;
+        }
+
+        @keyframes scan {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
         }
 
         .section:hover {
             transform: translateY(-5px);
+            box-shadow: 0 0 30px rgba(255, 215, 0, 0.4);
+            border-color: var(--neon-yellow);
         }
 
         h2 {
@@ -102,6 +255,9 @@
             display: flex;
             align-items: center;
             gap: 10px;
+            font-family: 'Courier New', monospace;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
         h2 i {
@@ -118,22 +274,42 @@
             align-items: center;
             justify-content: center;
             gap: 10px;
-            background-color: #5865F2;
-            color: white;
+            background-color: transparent;
+            color: var(--neon-yellow);
             padding: 14px 28px;
-            border-radius: 50px;
+            border-radius: 0;
             text-decoration: none;
             font-weight: 600;
             font-size: 1.2rem;
             transition: all 0.3s ease;
-            box-shadow: 0 4px 10px rgba(88, 101, 242, 0.4);
+            border: 2px solid var(--neon-yellow);
             margin-top: 1rem;
+            font-family: 'Courier New', monospace;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .discord-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 0, 0.2), transparent);
+            transition: 0.5s;
+        }
+
+        .discord-btn:hover::before {
+            left: 100%;
         }
 
         .discord-btn:hover {
-            background-color: #4752c4;
+            background-color: rgba(255, 255, 0, 0.1);
             transform: translateY(-3px);
-            box-shadow: 0 6px 15px rgba(88, 101, 242, 0.5);
+            box-shadow: 0 5px 15px rgba(255, 255, 0, 0.3);
         }
 
         .discord-btn i {
@@ -146,14 +322,16 @@
         }
 
         .allies-list li {
-            background-color: rgba(255, 140, 0, 0.2);
+            background-color: rgba(255, 140, 0, 0.1);
             padding: 12px 20px;
             margin-bottom: 10px;
-            border-radius: 8px;
-            border-left: 4px solid var(--chaos-orange);
+            border-radius: 0;
+            border-left: 4px solid var(--cyber-orange);
             display: flex;
             align-items: center;
             gap: 10px;
+            font-family: 'Courier New', monospace;
+            border: 1px solid rgba(255, 140, 0, 0.3);
         }
 
         .allies-list li i {
@@ -168,17 +346,29 @@
         }
 
         .game-card {
-            background: rgba(255, 140, 0, 0.15);
-            border-radius: 10px;
+            background: rgba(255, 140, 0, 0.05);
+            border-radius: 0;
             padding: 1.5rem;
             text-align: center;
             border: 1px solid rgba(255, 140, 0, 0.4);
             transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .game-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background: var(--cyber-orange);
         }
 
         .game-card:hover {
             transform: translateY(-5px);
-            background: rgba(255, 140, 0, 0.25);
+            background: rgba(255, 140, 0, 0.15);
             box-shadow: 0 5px 15px rgba(255, 140, 0, 0.3);
         }
 
@@ -191,6 +381,9 @@
         .game-card h3 {
             color: var(--primary-yellow);
             margin-bottom: 0.5rem;
+            font-family: 'Courier New', monospace;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
         .trolling-methods {
@@ -201,18 +394,36 @@
         }
 
         .method-card {
-            background: rgba(255, 215, 0, 0.1);
-            border-radius: 10px;
+            background: rgba(255, 215, 0, 0.05);
+            border-radius: 0;
             padding: 1.5rem;
-            border-left: 4px solid var(--chaos-orange);
+            border-left: 4px solid var(--cyber-orange);
+            border: 1px solid rgba(255, 215, 0, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .method-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-width: 0 30px 30px 0;
+            border-color: transparent var(--cyber-orange) transparent transparent;
         }
 
         .method-card h3 {
-            color: var(--chaos-orange);
+            color: var(--cyber-orange);
             margin-bottom: 0.8rem;
             display: flex;
             align-items: center;
             gap: 10px;
+            font-family: 'Courier New', monospace;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
         .method-card h3 i {
@@ -222,29 +433,57 @@
         .highlight {
             color: var(--primary-yellow);
             font-weight: bold;
+            text-shadow: 0 0 5px rgba(255, 215, 0, 0.5);
         }
 
         .annoyed-staff {
             text-align: center;
             margin: 2rem 0;
             padding: 1.5rem;
-            background: rgba(255, 0, 0, 0.1);
-            border-radius: 10px;
-            border: 2px dashed var(--chaos-orange);
+            background: rgba(255, 0, 0, 0.05);
+            border-radius: 0;
+            border: 2px solid var(--cyber-orange);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .annoyed-staff::before {
+            content: 'WARNING';
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            color: var(--cyber-orange);
+            font-size: 0.8rem;
+            font-weight: bold;
+            font-family: 'Courier New', monospace;
         }
 
         .annoyed-staff h3 {
-            color: var(--chaos-orange);
+            color: var(--cyber-orange);
             margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
         footer {
             text-align: center;
             padding: 2rem;
-            background-color: #0a0a0a;
+            background-color: rgba(5, 5, 5, 0.95);
             color: #888;
             margin-top: 2rem;
-            border-top: 3px solid var(--chaos-orange);
+            border-top: 3px solid var(--cyber-orange);
+            position: relative;
+            overflow: hidden;
+        }
+
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--neon-yellow), transparent);
         }
 
         .social-links {
@@ -258,11 +497,63 @@
             color: var(--primary-yellow);
             font-size: 1.5rem;
             transition: all 0.3s ease;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid rgba(255, 215, 0, 0.3);
         }
 
         .social-links a:hover {
-            color: var(--accent-yellow);
+            color: var(--neon-yellow);
             transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(255, 215, 0, 0.3);
+            border-color: var(--neon-yellow);
+        }
+
+        .tech-border {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .border-corner {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+        }
+
+        .border-corner.tl {
+            top: 20px;
+            left: 20px;
+            border-top: 2px solid var(--primary-yellow);
+            border-left: 2px solid var(--primary-yellow);
+        }
+
+        .border-corner.tr {
+            top: 20px;
+            right: 20px;
+            border-top: 2px solid var(--primary-yellow);
+            border-right: 2px solid var(--primary-yellow);
+        }
+
+        .border-corner.bl {
+            bottom: 20px;
+            left: 20px;
+            border-bottom: 2px solid var(--primary-yellow);
+            border-left: 2px solid var(--primary-yellow);
+        }
+
+        .border-corner.br {
+            bottom: 20px;
+            right: 20px;
+            border-bottom: 2px solid var(--primary-yellow);
+            border-right: 2px solid var(--primary-yellow);
         }
 
         @media (max-width: 768px) {
@@ -281,102 +572,120 @@
             .games-grid, .trolling-methods {
                 grid-template-columns: 1fr;
             }
+            
+            .border-corner {
+                width: 30px;
+                height: 30px;
+            }
         }
     </style>
 </head>
 <body>
+    <div class="tech-border">
+        <div class="border-corner tl"></div>
+        <div class="border-corner tr"></div>
+        <div class="border-corner bl"></div>
+        <div class="border-corner br"></div>
+    </div>
+    
     <header>
-        <div class="logo-container">
-            <div class="logo">💥</div>
-            <h1>Roblox Trolling Base</h1>
-            <p class="tagline">Making Staff Rage Since 2025</p>
-            <div class="chaos-badge">OWNED BY CJ</div>
+        <div class="scan-line"></div>
+        <div class="logo-container glitch-container">
+            <div class="logo">🤖</div>
+            <h1 class="glitch" data-text="ROBLOX TROLLING BASE">ROBLOX TROLLING BASE</h1>
+            <p class="tagline">MAKING STAFF RAGE SINCE 2025</p>
+            <div class="terminal-line">
+                > SYSTEM INITIALIZED <span class="blink">_</span><br>
+                > CHAOS PROTOCOLS: ACTIVE<br>
+                > TARGETING MODE: ENABLED
+            </div>
+            <div class="chaos-badge">[OWNED BY CJ]</div>
         </div>
     </header>
 
     <main>
         <section class="section">
-            <h2><i class="fas fa-fire"></i> What We're All About</h2>
-            <p>Hey there! Welcome to the Roblox Trolling Base - the place where we turn ordinary games into pure chaos. I'm CJ, and I started this group because honestly, watching staff members lose their minds is just way too fun.</p>
-            <p>We're not your average trolls just messing around. We've got our own style and favorite games where we know exactly how to push buttons and get those angry reactions we live for.</p>
-            <p>If you love causing chaos and seeing staff members absolutely lose it, you've found your people. This is where the real fun happens.</p>
+            <h2><i class="fas fa-terminal"></i> SYSTEM OVERVIEW</h2>
+            <p>Greetings, operator. Welcome to the <span class="highlight">Roblox Trolling Base</span> - a sophisticated chaos-generation system designed to maximize staff frustration metrics.</p>
+            <p>I am <span class="highlight">CJ</span>, lead engineer of this operation. We've developed proprietary algorithms that transform ordinary gaming environments into optimal rage-inducing scenarios.</p>
+            <p>Our mission: Deploy calculated chaos protocols while monitoring staff emotional stability metrics. The data we collect is... highly entertaining.</p>
             
             <a href="https://discord.gg/DaABByTs9T" class="discord-btn" target="_blank">
-                <i class="fab fa-discord"></i> Come Join The Fun
+                <i class="fab fa-discord"></i> ACCESS CHAOS NETWORK
             </a>
         </section>
 
         <section class="section">
-            <h2><i class="fas fa-handshake"></i> Our Troll Buddies</h2>
-            <p>We're not in this alone - we've got some awesome groups we team up with to make the chaos even better:</p>
+            <h2><i class="fas fa-network-wired"></i> ALLIED SYSTEMS</h2>
+            <p>Our chaos network integrates with several high-performance trolling systems:</p>
             <ul class="allies-list">
-                <li><i class="fas fa-users"></i> Hagey Trolling Union - These guys are legends at coordinating massive troll attacks with us</li>
-                <li><i class="fas fa-crosshairs"></i> Void Hub - Fellow trolling server specializing in Kohau Restaurant and Boba Cafe chaos with next-level scripts</li>
+                <li><i class="fas fa-server"></i> <span class="highlight">HAGEY TROLLING UNION</span> - Advanced coordination protocols for synchronized multi-vector attacks</li>
+                <li><i class="fas fa-cogs"></i> <span class="highlight">VOID HUB</span> - Specialized in Kohau Restaurant and Boba Cafe disruption with optimized scripts</li>
             </ul>
-            <p>When we team up, the staff doesn't stand a chance. It's beautiful chaos.</p>
+            <p>When our networks synchronize, staff resistance becomes statistically negligible. Beautifully efficient.</p>
         </section>
 
         <section class="section">
-            <h2><i class="fas fa-gamepad"></i> Our Favorite Games To Troll</h2>
-            <p>We've found the perfect games where our trolling style really shines:</p>
+            <h2><i class="fas fa-gamepad"></i> PRIMARY TARGET ENVIRONMENTS</h2>
+            <p>Our algorithms are optimized for these specific gaming matrices:</p>
             
             <div class="games-grid">
                 <div class="game-card">
                     <i class="fas fa-mug-hot"></i>
-                    <h3>Boba Cafe</h3>
-                    <p>Our go-to for making staff absolutely furious. Nothing better than watching them rage over bubble tea orders.</p>
+                    <h3>BOBA CAFE</h3>
+                    <p>Optimal environment for inducing maximum frustration. Bubble tea order spam yields exceptional rage metrics.</p>
                 </div>
                 <div class="game-card">
                     <i class="fas fa-utensils"></i>
-                    <h3>Kohau Restaurant</h3>
-                    <p>Perfect for spamming orders while they're trying to cook. The kitchen chaos is just hilarious to watch.</p>
+                    <h3>KOHAU RESTAURANT</h3>
+                    <p>Perfect for kitchen chaos algorithms. Order spam during cooking sequences produces predictable emotional responses.</p>
                 </div>
                 <div class="game-card">
                     <i class="fas fa-soap"></i>
-                    <h3>Washiez</h3>
-                    <p>Script flinging cars everywhere - it never gets old seeing vehicles flying across the map.</p>
+                    <h3>WASHIEZ</h3>
+                    <p>Vehicle physics manipulation scripts create optimal visual chaos. Flying car metrics remain consistently high.</p>
                 </div>
                 <div class="game-card">
-                    <i class="fas fa-plus"></i>
-                    <h3>And More!</h3>
-                    <p>We're always finding new games to mess with. The fun never stops!</p>
+                    <i class="fas fa-expand"></i>
+                    <h3>EXPANSION MODULES</h3>
+                    <p>Continual algorithm development for new environments. The chaos matrix is ever-expanding.</p>
                 </div>
             </div>
         </section>
 
         <section class="section">
-            <h2><i class="fas fa-tools"></i> How We Do Our Thing</h2>
-            <p>We've got our methods down to a science. Here's how we create the best chaos:</p>
+            <h2><i class="fas fa-tools"></i> CHAOS IMPLEMENTATION PROTOCOLS</h2>
+            <p>Our operational methodology follows these precise protocols:</p>
             
             <div class="trolling-methods">
                 <div class="method-card">
-                    <h3><i class="fas fa-bomb"></i> Spamming Like Crazy</h3>
-                    <p>We flood games with constant actions and orders until the servers can barely keep up. The more spam, the better the rage.</p>
+                    <h3><i class="fas fa-broadcast-tower"></i> DATA OVERLOAD</h3>
+                    <p>Flood target systems with excessive input until server stability metrics drop below acceptable thresholds.</p>
                 </div>
                 <div class="method-card">
-                    <h3><i class="fas fa-code"></i> Script Magic</h3>
-                    <p>We use scripts to do things the game normally wouldn't allow. Flying cars in Washiez? You bet.</p>
+                    <h3><i class="fas fa-code"></i> SCRIPT INJECTION</h3>
+                    <p>Deploy custom code to bypass normal environmental constraints. Physics manipulation yields optimal visual disruption.</p>
                 </div>
                 <div class="method-card">
-                    <h3><i class="fas fa-angry"></i> Pure Trolling</h3>
-                    <p>We know exactly what buttons to push to get staff members mad. It's an art form really.</p>
+                    <h3><i class="fas fa-brain"></i> PSYCHOLOGICAL PROFILE EXPLOITATION</h3>
+                    <p>Utilize behavioral prediction algorithms to trigger predictable emotional responses from staff entities.</p>
                 </div>
                 <div class="method-card">
-                    <h3><i class="fas fa-users"></i> Discord Coordination</h3>
-                    <p>Our Discord is where we plan everything. We chat, share tips, and organize massive troll events together.</p>
+                    <h3><i class="fas fa-satellite-dish"></i> NETWORK COORDINATION</h3>
+                    <p>Real-time communication and synchronization through our Discord command center for maximum operational efficiency.</p>
                 </div>
             </div>
 
             <div class="annoyed-staff">
-                <h3><i class="fas fa-angry"></i> The Best Part? Watching Staff Lose It</h3>
-                <p>Nothing beats that moment when staff members completely lose their cool. The rage, the frustration - that's how we know we're doing our job right!</p>
+                <h3><i class="fas fa-chart-line"></i> OPTIMAL OUTCOME METRICS</h3>
+                <p>The peak performance indicator remains staff emotional destabilization. When rage metrics spike beyond recoverable thresholds, mission success is confirmed.</p>
             </div>
         </section>
     </main>
 
     <footer>
-        <p>Roblox Trolling Base &copy; 2026 | Making Games Chaotic Since 2025 | Run by CJ</p>
-        <p>Just so you know, this is a fan site and not actually connected to Roblox.</p>
+        <p>ROBLOX TROLLING BASE v2 © 2026 | CHAOS ENGINEERING DIVISION | OPERATOR: CJ</p>
+        <p>Disclaimer: This system is an independent network not affiliated with Roblox Corporation.</p>
         <div class="social-links">
             <a href="https://discord.gg/DaABByTs9T" target="_blank"><i class="fab fa-discord"></i></a>
             <a href="https://www.tiktok.com/@cattaxevader" target="_blank"><i class="fab fa-tiktok"></i></a>
