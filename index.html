@@ -3,694 +3,334 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Roblox Trolling Base | Chaos & Mayhem</title>
+    <title>RTB | Chaos Engineering Division</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Orbitron:wght@400;900&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --primary: #FFD700;
+            --secondary: #FFA500;
+            --accent: #00FFCC; 
+            --bg-deep: #010103;
+            --bg-card: rgba(10, 10, 12, 0.9);
+            --text-main: #E0E0E0;
+            --cyber-red: #FF3131;
+            --ally-glow: rgba(0, 255, 204, 0.15);
+        }
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', 'Courier New', monospace, sans-serif;
-        }
-
-        :root {
-            --primary-yellow: #FFD700;
-            --neon-yellow: #FFFF00;
-            --dark-yellow: #FFC000;
-            --accent-yellow: #FFEE32;
-            --cyber-orange: #FF8C00;
-            --dark-bg: #0A0A0A;
-            --darker-bg: #050505;
-            --grid-color: rgba(255, 215, 0, 0.1);
-            --light-text: #FFFFFF;
-            --card-bg: #111111;
-            --terminal-green: #00FF00;
+            cursor: crosshair;
         }
 
         body {
-            background-color: var(--dark-bg);
-            color: var(--light-text);
-            line-height: 1.6;
+            background-color: var(--bg-deep);
+            color: var(--text-main);
+            font-family: 'JetBrains Mono', monospace;
             overflow-x: hidden;
+            /* Enhanced Space Background */
             background-image: 
-                linear-gradient(var(--grid-color) 1px, transparent 1px),
-                linear-gradient(90deg, var(--grid-color) 1px, transparent 1px);
-            background-size: 50px 50px;
+                linear-gradient(rgba(255, 215, 0, 0.01) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 215, 0, 0.01) 1px, transparent 1px);
+            background-size: 100px 100px;
         }
 
-        /* Glitch effect for header */
-        .glitch-container {
-            position: relative;
-        }
-
-        .glitch {
-            position: relative;
-            display: inline-block;
-        }
-
-        .glitch::before,
-        .glitch::after {
-            content: attr(data-text);
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-        }
-
-        .glitch::before {
-            left: 2px;
-            text-shadow: -2px 0 var(--terminal-green);
-            animation: glitch-anim 5s infinite linear alternate-reverse;
-            clip: rect(44px, 450px, 56px, 0);
-        }
-
-        .glitch::after {
-            left: -2px;
-            text-shadow: -2px 0 var(--cyber-orange);
-            animation: glitch-anim2 3s infinite linear alternate-reverse;
-            clip: rect(44px, 450px, 56px, 0);
-        }
-
-        @keyframes glitch-anim {
-            0% { clip: rect(42px, 9999px, 44px, 0); }
-            5% { clip: rect(12px, 9999px, 59px, 0); }
-            10% { clip: rect(48px, 9999px, 29px, 0); }
-            15% { clip: rect(42px, 9999px, 73px, 0); }
-            20% { clip: rect(63px, 9999px, 27px, 0); }
-            25% { clip: rect(34px, 9999px, 55px, 0); }
-            30% { clip: rect(86px, 9999px, 73px, 0); }
-            35% { clip: rect(20px, 9999px, 20px, 0); }
-            40% { clip: rect(26px, 9999px, 60px, 0); }
-            45% { clip: rect(25px, 9999px, 66px, 0); }
-            50% { clip: rect(57px, 9999px, 98px, 0); }
-            55% { clip: rect(5px, 9999px, 46px, 0); }
-            60% { clip: rect(82px, 9999px, 31px, 0); }
-            65% { clip: rect(54px, 9999px, 27px, 0); }
-            70% { clip: rect(28px, 9999px, 99px, 0); }
-            75% { clip: rect(45px, 9999px, 69px, 0); }
-            80% { clip: rect(23px, 9999px, 85px, 0); }
-            85% { clip: rect(54px, 9999px, 84px, 0); }
-            90% { clip: rect(45px, 9999px, 47px, 0); }
-            95% { clip: rect(37px, 9999px, 97px, 0); }
-            100% { clip: rect(4px, 9999px, 9px, 0); }
-        }
-
-        @keyframes glitch-anim2 {
-            0% { clip: rect(65px, 9999px, 100px, 0); }
-            5% { clip: rect(52px, 9999px, 74px, 0); }
-            10% { clip: rect(79px, 9999px, 85px, 0); }
-            15% { clip: rect(75px, 9999px, 5px, 0); }
-            20% { clip: rect(67px, 9999px, 61px, 0); }
-            25% { clip: rect(14px, 9999px, 79px, 0); }
-            30% { clip: rect(1px, 9999px, 66px, 0); }
-            35% { clip: rect(86px, 9999px, 30px, 0); }
-            40% { clip: rect(23px, 9999px, 98px, 0); }
-            45% { clip: rect(85px, 9999px, 72px, 0); }
-            50% { clip: rect(71px, 9999px, 75px, 0); }
-            55% { clip: rect(2px, 9999px, 48px, 0); }
-            60% { clip: rect(30px, 9999px, 16px, 0); }
-            65% { clip: rect(59px, 9999px, 50px, 0); }
-            70% { clip: rect(41px, 9999px, 62px, 0); }
-            75% { clip: rect(2px, 9999px, 82px, 0); }
-            80% { clip: rect(47px, 9999px, 73px, 0); }
-            85% { clip: rect(3px, 9999px, 27px, 0); }
-            90% { clip: rect(40px, 9999px, 86px, 0); }
-            95% { clip: rect(45px, 9999px, 72px, 0); }
-            100% { clip: rect(23px, 9999px, 49px, 0); }
-        }
-
-        header {
-            background: linear-gradient(135deg, rgba(0,0,0,0.9), rgba(10,10,10,0.95));
-            color: var(--primary-yellow);
-            text-align: center;
-            padding: 2.5rem 1rem;
-            position: relative;
-            border-bottom: 3px solid var(--primary-yellow);
-            box-shadow: 0 0 30px rgba(255, 215, 0, 0.3);
-            overflow: hidden;
-        }
-
-        .terminal-line {
-            font-family: 'Courier New', monospace;
-            color: var(--terminal-green);
-            font-size: 1.1rem;
-            margin-top: 10px;
-            text-shadow: 0 0 5px rgba(0, 255, 0, 0.7);
-        }
-
-        .blink {
-            animation: blink 1s infinite;
-        }
-
-        @keyframes blink {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0; }
-        }
-
-        .logo-container {
-            margin-bottom: 1rem;
-            position: relative;
-            z-index: 2;
-        }
-
-        .logo {
-            font-size: 3.5rem;
-            margin-bottom: 0.5rem;
-            color: var(--neon-yellow);
-            text-shadow: 0 0 10px rgba(255, 255, 0, 0.7);
-        }
-
-        h1 {
-            font-size: 2.8rem;
-            margin-bottom: 0.5rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-        }
-
-        .tagline {
-            font-size: 1.4rem;
-            font-weight: 700;
-            opacity: 0.9;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            color: var(--accent-yellow);
-            margin-bottom: 10px;
-        }
-
-        .chaos-badge {
-            display: inline-block;
-            background: var(--primary-yellow);
-            color: #000;
-            padding: 8px 20px;
-            border-radius: 0;
-            font-size: 1rem;
-            margin-top: 10px;
-            font-weight: bold;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            border: 2px solid #000;
-            font-family: 'Courier New', monospace;
-        }
-
-        .scan-line {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(to bottom, transparent 50%, rgba(255, 215, 0, 0.05) 50%);
-            background-size: 100% 4px;
-            z-index: 1;
-            pointer-events: none;
-        }
-
-        main {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 2rem;
-            position: relative;
-            z-index: 2;
-        }
-
-        .section {
-            background-color: rgba(17, 17, 17, 0.9);
-            border-radius: 0;
-            padding: 2rem;
-            margin-bottom: 2rem;
-            box-shadow: 0 0 20px rgba(255, 215, 0, 0.2);
-            border: 1px solid rgba(255, 215, 0, 0.3);
-            border-left: 5px solid var(--cyber-orange);
-            position: relative;
-            overflow: hidden;
-            transition: all 0.3s ease;
-        }
-
-        .section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 2px;
-            background: linear-gradient(90deg, transparent, var(--neon-yellow), transparent);
-            animation: scan 3s linear infinite;
-        }
-
-        @keyframes scan {
-            0% { transform: translateX(-100%); }
-            100% { transform: translateX(100%); }
-        }
-
-        .section:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 0 30px rgba(255, 215, 0, 0.4);
-            border-color: var(--neon-yellow);
-        }
-
-        h2 {
-            color: var(--primary-yellow);
-            margin-bottom: 1rem;
-            font-size: 1.8rem;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-family: 'Courier New', monospace;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        h2 i {
-            font-size: 1.5rem;
-        }
-
-        p {
-            margin-bottom: 1rem;
-            font-size: 1.1rem;
-        }
-
-        .discord-btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            background-color: transparent;
-            color: var(--neon-yellow);
-            padding: 14px 28px;
-            border-radius: 0;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 1.2rem;
-            transition: all 0.3s ease;
-            border: 2px solid var(--neon-yellow);
-            margin-top: 1rem;
-            font-family: 'Courier New', monospace;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .discord-btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 0, 0.2), transparent);
-            transition: 0.5s;
-        }
-
-        .discord-btn:hover::before {
-            left: 100%;
-        }
-
-        .discord-btn:hover {
-            background-color: rgba(255, 255, 0, 0.1);
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(255, 255, 0, 0.3);
-        }
-
-        .discord-btn i {
-            font-size: 1.5rem;
-        }
-
-        .allies-list {
-            list-style-type: none;
-            padding-left: 0;
-        }
-
-        .allies-list li {
-            background-color: rgba(255, 140, 0, 0.1);
-            padding: 12px 20px;
-            margin-bottom: 10px;
-            border-radius: 0;
-            border-left: 4px solid var(--cyber-orange);
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-family: 'Courier New', monospace;
-            border: 1px solid rgba(255, 140, 0, 0.3);
-        }
-
-        .allies-list li i {
-            color: var(--primary-yellow);
-        }
-
-        .games-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 20px;
-            margin-top: 1.5rem;
-        }
-
-        .game-card {
-            background: rgba(255, 140, 0, 0.05);
-            border-radius: 0;
-            padding: 1.5rem;
-            text-align: center;
-            border: 1px solid rgba(255, 140, 0, 0.4);
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .game-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 5px;
-            height: 100%;
-            background: var(--cyber-orange);
-        }
-
-        .game-card:hover {
-            transform: translateY(-5px);
-            background: rgba(255, 140, 0, 0.15);
-            box-shadow: 0 5px 15px rgba(255, 140, 0, 0.3);
-        }
-
-        .game-card i {
-            font-size: 2.5rem;
-            color: var(--primary-yellow);
-            margin-bottom: 1rem;
-        }
-
-        .game-card h3 {
-            color: var(--primary-yellow);
-            margin-bottom: 0.5rem;
-            font-family: 'Courier New', monospace;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .trolling-methods {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 20px;
-            margin-top: 1.5rem;
-        }
-
-        .method-card {
-            background: rgba(255, 215, 0, 0.05);
-            border-radius: 0;
-            padding: 1.5rem;
-            border-left: 4px solid var(--cyber-orange);
-            border: 1px solid rgba(255, 215, 0, 0.3);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .method-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            right: 0;
-            width: 0;
-            height: 0;
-            border-style: solid;
-            border-width: 0 30px 30px 0;
-            border-color: transparent var(--cyber-orange) transparent transparent;
-        }
-
-        .method-card h3 {
-            color: var(--cyber-orange);
-            margin-bottom: 0.8rem;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-family: 'Courier New', monospace;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .method-card h3 i {
-            font-size: 1.2rem;
-        }
-
-        .highlight {
-            color: var(--primary-yellow);
-            font-weight: bold;
-            text-shadow: 0 0 5px rgba(255, 215, 0, 0.5);
-        }
-
-        .annoyed-staff {
-            text-align: center;
-            margin: 2rem 0;
-            padding: 1.5rem;
-            background: rgba(255, 0, 0, 0.05);
-            border-radius: 0;
-            border: 2px solid var(--cyber-orange);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .annoyed-staff::before {
-            content: 'WARNING';
-            position: absolute;
-            top: 10px;
-            left: 10px;
-            color: var(--cyber-orange);
-            font-size: 0.8rem;
-            font-weight: bold;
-            font-family: 'Courier New', monospace;
-        }
-
-        .annoyed-staff h3 {
-            color: var(--cyber-orange);
-            margin-bottom: 1rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        footer {
-            text-align: center;
-            padding: 2rem;
-            background-color: rgba(5, 5, 5, 0.95);
-            color: #888;
-            margin-top: 2rem;
-            border-top: 3px solid var(--cyber-orange);
-            position: relative;
-            overflow: hidden;
-        }
-
-        footer::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, var(--neon-yellow), transparent);
-        }
-
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            margin-top: 1rem;
-        }
-
-        .social-links a {
-            color: var(--primary-yellow);
-            font-size: 1.5rem;
-            transition: all 0.3s ease;
-            width: 50px;
-            height: 50px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border: 1px solid rgba(255, 215, 0, 0.3);
-        }
-
-        .social-links a:hover {
-            color: var(--neon-yellow);
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(255, 215, 0, 0.3);
-            border-color: var(--neon-yellow);
-        }
-
-        .tech-border {
+        #bg-canvas {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 1;
+            top: 0; left: 0;
+            z-index: -1;
+            opacity: 0.8;
         }
 
-        .border-corner {
-            position: absolute;
-            width: 50px;
-            height: 50px;
+        /* --- Header --- */
+        header {
+            height: 80vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            border-bottom: 1px solid rgba(255, 215, 0, 0.2);
+            background: radial-gradient(circle at center, rgba(20, 20, 40, 0.3) 0%, transparent 70%);
         }
 
-        .border-corner.tl {
-            top: 20px;
-            left: 20px;
-            border-top: 2px solid var(--primary-yellow);
-            border-left: 2px solid var(--primary-yellow);
+        .hero-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: clamp(2rem, 10vw, 6rem);
+            color: var(--primary);
+            text-transform: uppercase;
+            letter-spacing: 20px;
+            filter: drop-shadow(0 0 25px var(--primary));
+            margin-bottom: 10px;
         }
 
-        .border-corner.tr {
-            top: 20px;
-            right: 20px;
-            border-top: 2px solid var(--primary-yellow);
-            border-right: 2px solid var(--primary-yellow);
+        .hero-sub {
+            letter-spacing: 8px;
+            color: var(--secondary);
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            margin-bottom: 40px;
+            opacity: 0.8;
         }
 
-        .border-corner.bl {
-            bottom: 20px;
-            left: 20px;
-            border-bottom: 2px solid var(--primary-yellow);
-            border-left: 2px solid var(--primary-yellow);
+        /* --- Layout --- */
+        main {
+            max-width: 1400px;
+            margin: -50px auto 0;
+            padding: 20px;
+            position: relative;
+            z-index: 10;
         }
 
-        .border-corner.br {
-            bottom: 20px;
-            right: 20px;
-            border-bottom: 2px solid var(--primary-yellow);
-            border-right: 2px solid var(--primary-yellow);
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 25px;
         }
 
-        @media (max-width: 768px) {
-            h1 {
-                font-size: 2.2rem;
-            }
-            
-            .logo {
-                font-size: 2.8rem;
-            }
-            
-            .section {
-                padding: 1.5rem;
-            }
-            
-            .games-grid, .trolling-methods {
-                grid-template-columns: 1fr;
-            }
-            
-            .border-corner {
-                width: 30px;
-                height: 30px;
-            }
+        .card {
+            background: var(--bg-card);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 30px;
+            backdrop-filter: blur(15px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        .col-12 { grid-column: span 12; }
+        .col-8 { grid-column: span 8; }
+        .col-4 { grid-column: span 4; }
+
+        /* --- Syndicate Ally Cards --- */
+        .syndicate-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .ally-card {
+            background: rgba(0, 0, 0, 0.4);
+            border: 1px solid #222;
+            padding: 25px;
+            transition: 0.3s;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .ally-card:hover {
+            border-color: var(--accent);
+            box-shadow: 0 0 20px var(--ally-glow);
+            transform: scale(1.02);
+        }
+
+        .ally-card h3 {
+            color: var(--accent);
+            font-family: 'Orbitron';
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .ally-desc {
+            font-size: 0.85rem;
+            opacity: 0.8;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .btn-ally {
+            display: inline-block;
+            text-align: center;
+            background: transparent;
+            border: 1px solid var(--accent);
+            color: var(--accent);
+            padding: 10px;
+            text-decoration: none;
+            font-size: 0.7rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: 0.3s;
+        }
+
+        .btn-ally:hover {
+            background: var(--accent);
+            color: #000;
+        }
+
+        /* --- Footer --- */
+        footer {
+            margin-top: 100px;
+            padding: 80px 20px;
+            text-align: center;
+            background: linear-gradient(to bottom, transparent, #000);
+        }
+
+        .creator-tag {
+            color: var(--primary);
+            font-size: 0.7rem;
+            letter-spacing: 3px;
+            opacity: 0.5;
+        }
+
+        /* --- Animations --- */
+        .pulse { animation: pulse-border 2s infinite; }
+        @keyframes pulse-border {
+            0% { border-color: rgba(0, 255, 204, 0.2); }
+            50% { border-color: rgba(0, 255, 204, 0.8); }
+            100% { border-color: rgba(0, 255, 204, 0.2); }
         }
     </style>
 </head>
 <body>
-    <div class="tech-border">
-        <div class="border-corner tl"></div>
-        <div class="border-corner tr"></div>
-        <div class="border-corner bl"></div>
-        <div class="border-corner br"></div>
-    </div>
-    
+
+    <canvas id="bg-canvas"></canvas>
+
     <header>
-        <div class="scan-line"></div>
-        <div class="logo-container glitch-container">
-            <div class="logo">RTB</div>
-            <h1 class="glitch" data-text="ROBLOX TROLLING BASE">ROBLOX TROLLING BASE</h1>
-            <p class="tagline">MAKING STAFF RAGE SINCE 2025</p>
-            <div class="terminal-line">
-                > SYSTEM INITIALIZED <span class="blink">_</span><br>
-                > CHAOS PROTOCOLS: ACTIVE<br>
-                > TARGETING MODE: ENABLED
-            </div>
-            <div class="chaos-badge">[OWNED BY CJ]</div>
+        <div class="hero-title">RTB.PROTOCOL</div>
+        <div class="hero-sub">Deep Space Chaos Engineering</div>
+        <div style="margin-top: 20px;">
+            <span style="color: var(--accent); border: 1px solid var(--accent); padding: 5px 15px; font-size: 0.7rem;">CJ // CATNATURE</span>
         </div>
     </header>
 
     <main>
-        <section class="section">
-            <h2><i class="fas fa-terminal"></i> SYSTEM OVERVIEW</h2>
-            <p>Greetings, operator. Welcome to the <span class="highlight">Roblox Trolling Base</span> - a sophisticated chaos-generation system designed to maximize staff frustration metrics.</p>
-            <p>I am <span class="highlight">CJ</span>, lead engineer of this operation. We've developed proprietary algorithms that transform ordinary gaming environments into optimal rage-inducing scenarios.</p>
-            <p>Our mission: Deploy calculated chaos protocols while monitoring staff emotional stability metrics. The data we collect is... highly entertaining.</p>
+        <div class="grid-container">
             
-            <a href="https://discord.gg/DaABByTs9T" class="discord-btn" target="_blank">
-                <i class="fab fa-discord"></i> ACCESS CHAOS NETWORK
-            </a>
-        </section>
+            <section class="card col-12">
+                <h2 style="font-family: 'Orbitron'; color: var(--primary); margin-bottom: 20px;">
+                    <i class="fas fa-satellite-dish"></i> BROADCAST_INTEL
+                </h2>
+                <p style="max-width: 800px; line-height: 1.8;">
+                    RTB (Roblox Trolling Base) is the nexus of asynchronous disruption. We facilitate high-impact 
+                    "Social Stress Tests" across corporate-affiliated environments. By integrating 
+                    <span style="color: var(--accent);">Void Hub Scripting</span> and <span style="color: var(--accent);">HTU Operational Tactics</span>, we ensure 
+                    maximum staff frustration with 100% undetectability.
+                </p>
+            </section>
 
-        <section class="section">
-            <h2><i class="fas fa-network-wired"></i> ALLIED SYSTEMS</h2>
-            <p>Our chaos network integrates with several high-performance trolling systems:</p>
-            <ul class="allies-list">
-                <li><i class="fas fa-server"></i> <span class="highlight">HAGEY TROLLING UNION</span> - Advanced coordination protocols for synchronized multi-vector attacks</li>
-                <li><i class="fas fa-cogs"></i> <span class="highlight">VOID HUB</span> - Specialized in Kohau Restaurant and Boba Cafe disruption with optimized scripts</li>
-            </ul>
-            <p>When our networks synchronize, staff resistance becomes statistically negligible. Beautifully efficient.</p>
-        </section>
+            <section class="card col-12" style="border-top: 2px solid var(--accent);">
+                <h2 style="font-family: 'Orbitron'; color: var(--accent); margin-bottom: 10px;">
+                    <i class="fas fa-handshake"></i> SYNDICATE_ALLIES
+                </h2>
+                <p style="font-size: 0.8rem; opacity: 0.6; margin-bottom: 20px;">Connected Nodes // Trusted Partners</p>
+                
+                <div class="syndicate-grid">
+                    <div class="ally-card pulse">
+                        <div>
+                            <h3><i class="fas fa-shield-halved"></i> HTU</h3>
+                            <p class="ally-desc">
+                                <strong>Hagey's Trolling Union</strong><br>
+                                Specialized in massive coordinated strikes at <em>Kohau</em>, <em>Maldives</em>, and <em>Cruises</em>. 
+                                The frontline of physical game disruption.
+                            </p>
+                        </div>
+                        <a href="https://discord.gg/SAvxqguzzs" target="_blank" class="btn-ally">Initialize Link</a>
+                    </div>
 
-        <section class="section">
-            <h2><i class="fas fa-gamepad"></i> PRIMARY TARGET ENVIRONMENTS</h2>
-            <p>Our algorithms are optimized for these specific gaming matrices:</p>
-            
-            <div class="games-grid">
-                <div class="game-card">
-                    <i class="fas fa-mug-hot"></i>
-                    <h3>BOBA CAFE</h3>
-                    <p>Optimal environment for inducing maximum frustration. Bubble tea order spam yields exceptional rage metrics.</p>
-                </div>
-                <div class="game-card">
-                    <i class="fas fa-utensils"></i>
-                    <h3>KOHAU RESTAURANT</h3>
-                    <p>Perfect for kitchen chaos algorithms. Order spam during cooking sequences produces predictable emotional responses.</p>
-                </div>
-                <div class="game-card">
-                    <i class="fas fa-soap"></i>
-                    <h3>WASHIEZ</h3>
-                    <p>Vehicle physics manipulation scripts create optimal visual chaos. Flying car metrics remain consistently high.</p>
-                </div>
-                <div class="game-card">
-                    <i class="fas fa-expand"></i>
-                    <h3>EXPANSION MODULES</h3>
-                    <p>Continual algorithm development for new environments. The chaos matrix is ever-expanding.</p>
-                </div>
-            </div>
-        </section>
+                    <div class="ally-card pulse">
+                        <div>
+                            <h3><i class="fas fa-code-merge"></i> VOID HUB</h3>
+                            <p class="ally-desc">
+                                <strong>The Chaos Engine</strong><br>
+                                Advanced script development and chaos-deployment vectors. Optimized for 
+                                total system failure at <em>Kohau</em> and <em>Boba</em>.
+                            </p>
+                        </div>
+                        <a href="https://discord.gg/u7tdVp4H2R" target="_blank" class="btn-ally">Access Scripts</a>
+                    </div>
 
-        <section class="section">
-            <h2><i class="fas fa-tools"></i> CHAOS IMPLEMENTATION PROTOCOLS</h2>
-            <p>Our operational methodology follows these precise protocols:</p>
-            
-            <div class="trolling-methods">
-                <div class="method-card">
-                    <h3><i class="fas fa-broadcast-tower"></i> DATA OVERLOAD</h3>
-                    <p>Flood target systems with excessive input until server stability metrics drop below acceptable thresholds.</p>
+                    <div class="ally-card pulse">
+                        <div>
+                            <h3><i class="fas fa-microchip"></i> EXEFY</h3>
+                            <p class="ally-desc">
+                                <strong>Developer Nexus</strong><br>
+                                A specialized server designed for any and all developers. 
+                                Technical support, resource sharing, and infrastructure growth.
+                            </p>
+                        </div>
+                        <a href="https://discord.gg/MgtrVN23ya" target="_blank" class="btn-ally">Join Network</a>
+                    </div>
                 </div>
-                <div class="method-card">
-                    <h3><i class="fas fa-code"></i> SCRIPT INJECTION</h3>
-                    <p>Deploy custom code to bypass normal environmental constraints. Physics manipulation yields optimal visual disruption.</p>
-                </div>
-                <div class="method-card">
-                    <h3><i class="fas fa-brain"></i> PSYCHOLOGICAL PROFILE EXPLOITATION</h3>
-                    <p>Utilize behavioral prediction algorithms to trigger predictable emotional responses from staff entities.</p>
-                </div>
-                <div class="method-card">
-                    <h3><i class="fas fa-satellite-dish"></i> NETWORK COORDINATION</h3>
-                    <p>Real-time communication and synchronization through our Discord command center for maximum operational efficiency.</p>
-                </div>
-            </div>
+            </section>
 
-            <div class="annoyed-staff">
-                <h3><i class="fas fa-chart-line"></i> OPTIMAL OUTCOME METRICS</h3>
-                <p>The peak performance indicator remains staff emotional destabilization. When rage metrics spike beyond recoverable thresholds, mission success is confirmed.</p>
-            </div>
-        </section>
+            <section class="card col-8">
+                <h3 style="font-family: 'Orbitron'; margin-bottom: 15px;">OPERATIONAL_RESOURCES</h3>
+                <div style="display: flex; gap: 15px; flex-wrap: wrap;">
+                    <a href="https://carljohnson-san.github.io/RTBOS/" style="color:var(--primary); text-decoration: none; border: 1px solid var(--primary); padding: 10px 20px;">RUN_RTB_OS</a>
+                    <a href="https://carljohnson-san.github.io/rtbguides/" style="color:var(--primary); text-decoration: none; border: 1px solid var(--primary); padding: 10px 20px;">VIEW_GUIDES</a>
+                </div>
+            </section>
+
+            <section class="card col-4" style="text-align: center;">
+                <h3 style="font-family: 'Orbitron'; margin-bottom: 10px;">UPLINK</h3>
+                <p style="font-size: 0.7rem; margin-bottom: 15px;">OUR BASE</p>
+                <a href="https://discord.gg/DaABByTs9T" class="btn-ally" style="border-color: var(--primary); color: var(--primary);">Main Command Center</a>
+            </section>
+
+        </div>
     </main>
 
     <footer>
-        <p>ROBLOX TROLLING BASE v2 © 2026 | CHAOS ENGINEERING DIVISION | OPERATOR: CJ</p>
-        <p>Disclaimer: This system is an independent network not affiliated with Roblox Corporation.</p>
-        <div class="social-links">
-            <a href="https://discord.gg/DaABByTs9T" target="_blank"><i class="fab fa-discord"></i></a>
-            <a href="https://www.tiktok.com/@cattaxevader" target="_blank"><i class="fab fa-tiktok"></i></a>
-            <a href="#"><i class="fab fa-roblox"></i></a>
-        </div>
+        <div class="creator-tag">CJ/CATNATURE // RTB OS v4.0</div>
+        <p style="font-size: 0.6rem; opacity: 0.3; margin-top: 20px;">&copy; 2026 RTB CHAOS DIVISION. ALL RIGHTS DISTRIBUTED.</p>
     </footer>
+
+    <script>
+        // Space Particle Engine
+        const canvas = document.getElementById('bg-canvas');
+        const ctx = canvas.getContext('2d');
+        let stars = [];
+
+        function resize() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        window.addEventListener('resize', resize);
+        resize();
+
+        class Star {
+            constructor() {
+                this.reset();
+            }
+            reset() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.size = Math.random() * 2 + 0.5;
+                this.speed = Math.random() * 0.2;
+                this.opacity = Math.random();
+                this.val = Math.random() * 0.02;
+            }
+            update() {
+                this.y += this.speed;
+                this.opacity += this.val;
+                if (this.opacity > 1 || this.opacity < 0) this.val *= -1;
+                if (this.y > canvas.height) this.reset();
+            }
+            draw() {
+                ctx.fillStyle = `rgba(255, 215, 0, ${this.opacity})`;
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fill();
+            }
+        }
+
+        for (let i = 0; i < 200; i++) stars.push(new Star());
+
+        function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            stars.forEach(s => {
+                s.update();
+                s.draw();
+            });
+            requestAnimationFrame(animate);
+        }
+        animate();
+    </script>
 </body>
 </html>
